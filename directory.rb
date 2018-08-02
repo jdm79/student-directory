@@ -5,6 +5,11 @@ def input_students
   students = []
   # get the first name
   name = gets.chomp
+  puts "Please enter the cohort of the student (if blank, default is November"
+  cohort = gets.chomp
+  if cohort.empty?
+    cohort = "november"
+  end
   puts "Please enter the hobby of the student"
   hobby = gets.chomp
   puts "Please enter the height of the student"
@@ -15,13 +20,18 @@ def input_students
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
-    students << {name: name, cohort: :november, hobby: hobby, height: height, POB: place_of_birth}
+    students << {name: name, cohort: cohort, hobby: hobby, height: height, POB: place_of_birth}
     puts "We now have #{students.count} students"
     # get another name from the user
     puts "Please enter the name of the student"
     name = gets.chomp
     if name.empty?
       break
+    end
+    puts "Please enter the cohort of the student (if blank, default is November"
+    cohort = gets.chomp
+    if cohort.empty?
+      cohort = "november"
     end
     puts "Please enter the hobby of the student"
     hobby = gets.chomp
@@ -51,6 +61,7 @@ def print(students)
   count = 0
   while count < students.length 
       puts "Person #{count+1}. ".center(4) + "#{students[count][:name]}" 
+      puts "cohort: #{students[count][:cohort]}"
       puts "hobby: #{students[count][:hobby]}"
       puts "height: #{students[count][:height]}"
       puts "POB: #{students[count][:POB]}"
