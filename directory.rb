@@ -4,13 +4,13 @@ def input_students
   # create an empty array
   students = []
   # get the first name
-  name = gets.chomp
+  name = gets.chop
   puts "Please enter the cohort of the student (if blank, default is November)"
   cohort = gets.chomp
-  # if cohort.empty?
-  #   cohort = "november"
-  # end
-  cohort.default = "november"
+  if cohort.empty?
+    cohort = "november"
+  end
+  # cohort.default = "november"
   puts "Please enter the hobby of the student"
   hobby = gets.chomp
   puts "Please enter the height of the student"
