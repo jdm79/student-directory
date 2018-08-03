@@ -29,7 +29,11 @@ def print(students)
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  if !students.empty?
+    puts "Overall, we have #{students.count} great students"
+  else
+    puts "There are no students in this cohort :("
+  end
 end
 
 
