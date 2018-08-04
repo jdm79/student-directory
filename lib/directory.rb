@@ -17,7 +17,7 @@ end
 
 def show_students
   print_header
-  print
+  print_students_list
   print_footer
 end
 
@@ -89,7 +89,7 @@ def print_header
   puts "-------------"
 end
 
-def print
+def print_students_list
   @students.each do |student|
     if student[:cohort] == :november
       puts "#{student[:name]} (#{student[:cohort]} cohort)"
