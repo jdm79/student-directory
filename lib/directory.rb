@@ -34,6 +34,18 @@ def process(selection)
   end
 end
 
+def save_students
+  # open the file for writing
+  file = File.open("students.csv", "w")
+  # iterate over the array of students
+  @students.each do |student|
+    student_data = [student[:name], student[:cohort]]
+    csv_line = student_data.join(",")
+    file.puts csv_line
+  end
+  file.close
+end
+
 def input_students
   puts "To finish, just hit return twice after the last question"
   puts "Please enter the name of the student"
@@ -45,18 +57,11 @@ def input_students
   if cohort.empty?
     cohort = "november"
   end
-  # cohort.default = "november"
-  puts "Please enter the hobby of the student"
-  hobby = gets.chomp
-  puts "Please enter the height of the student"
-  height = gets.chomp
-  puts "Please enter the place of birth of the student"
-  place_of_birth = gets.chomp
   
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
-    @students << {name: name, cohort: cohort.to_sym, hobby: hobby, height: height, POB: place_of_birth}
+    @students << {name: name, cohort: cohort.to_sym}
     if @students.length == 1
       puts "We now have #{@students.count} student"
     else
@@ -73,12 +78,6 @@ def input_students
     if cohort.empty?
       cohort = "november"
     end
-    puts "Please enter the hobby of the student"
-    hobby = gets.chomp
-    puts "Please enter the height of the student"
-    height = gets.chomp
-    puts "Please enter the place of birth of the student"
-    place_of_birth = gets.chomp
   end
   # return the array of @students
   @students
